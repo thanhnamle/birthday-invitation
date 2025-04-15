@@ -1,0 +1,236 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8e9f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+.card {
+    width: 400px;
+    height: 550px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    transition: transform 1s;
+}
+
+.card-front, .card-inside {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    transition: transform 1s;
+}
+
+.card-inside {
+    background: linear-gradient(to bottom, #ffd1dc, #ffaec0);
+    transform: rotateY(180deg);
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.card-front {
+    background: linear-gradient(135deg, #ff7eb9, #ff65a3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.card.open .card-front {
+    transform: rotateY(-180deg);
+}
+
+.card.open .card-inside {
+    transform: rotateY(0);
+}
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #ff4081;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #ff4081;
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+    color: #444;
+}
+
+.date {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 15px 0;
+    color: #ff4081;
+}
+
+.location {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.envelope {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #ff7eb9;
+    clip-path: polygon(0 0, 100% 0, 100% 70%, 50% 100%, 0 70%);
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.5s ease-out;
+}
+
+.envelope.open {
+    transform: translateY(-100%);
+}
+
+.decorations {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.balloon {
+    position: absolute;
+    width: 40px;
+    height: 50px;
+    border-radius: 50%;
+    animation: float 5s infinite alternate ease-in-out;
+}
+
+.balloon:nth-child(1) {
+    background-color: #FF9AA2;
+    top: 20px;
+    left: 30px;
+    animation-delay: 0.2s;
+}
+
+.balloon:nth-child(2) {
+    background-color: #FFDAC1;
+    top: 50px;
+    right: 40px;
+    animation-delay: 0.5s;
+}
+
+.balloon:nth-child(3) {
+    background-color: #B5EAD7;
+    bottom: 70px;
+    left: 50px;
+    animation-delay: 0.8s;
+}
+
+.balloon:nth-child(4) {
+    background-color: #C7CEEA;
+    bottom: 40px;
+    right: 60px;
+    animation-delay: 1.1s;
+}
+
+.balloon::before {
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 15px;
+    background-color: inherit;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 0 0 5px 5px;
+}
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    opacity: 0;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+    100% {
+        transform: translateY(-20px) rotate(10deg);
+    }
+}
+
+@keyframes confettiFall {
+    0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(500px) rotate(360deg);
+        opacity: 0.2;
+    }
+}
+
+.open-text {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #ff65a3;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s;
+}
+
+.open-text:hover {
+    background-color: #ff4081;
+}
+
+.button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #ff65a3;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.button:hover {
+    transform: scale(1.05);
+    background-color: #ff4081;
+}
+
+.cake-icon {
+    font-size: 60px;
+    margin: 20px 0;
+}
