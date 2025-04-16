@@ -8,44 +8,43 @@
 </head>
 <body>
     <div class="invite-container">
-        <div class="wrapper">
+        <div class="wrapper" id="envelope-wrapper">
             <div class="lid one"></div>
             <div class="lid two"></div>
             <div class="envelope" id="envelope-trigger">
-                <div class="envelope-body">
-                    <div class="envelope-flap" id="flap"></div>
-                </div>
+            <div class="letter" id="letter">
+                Nội dung lá thư
             </div>
         </div>
-        <div class="letter" id="letter">
-            Nội dung lá thư
-        </div>
+    </div>
+        
 
         <div class="instructions">Nhấp vào để mở</div>
     </div>
     <script>
-        const envelope = document.getElementById('envelope');
+        const envelopeWrapper = document.getElementById('envelope-wrapper');
+        const envelope = document.getElementById('envelope-trigger');
         const letter = document.getElementById('letter');
 
-        envelope.addEventListener('click', function() {
-            // Bước 1: Mở nắp phong bì
-            this.classList.add('opening');
+        envelopeWrapper.addEventListener('click', function() {
+        // Thêm class active vào wrapper để kích hoạt hiệu ứng mở nắp
+        this.classList.add('active');
 
-            // Bước 2: Sau khi mở nắp, làm mờ dần phong bì
+        // Làm mờ dần phong bì sau khi nắp mở
+        setTimeout(() => {
+            envelope.classList.add('hidden');
+
+            // Hiện dần lá thư
             setTimeout(() => {
-                this.classList.add('hidden');
+            letter.classList.add('visible');
+            }, 300);
 
-                // Bước 3: Hiện dần lá thư
-                setTimeout(() => {
-                    letter.classList.add('visible');
-                }, 300);
+        }, 600);
 
-            }, 600);
-
-            // Nếu muốn chuyển trang sau khi hoàn thành hiệu ứng
-            // setTimeout(() => {
-            //   window.location.href = 'trang-thu.html';
-            // }, 2000);
+        // Nếu muốn chuyển trang sau khi hoàn thành hiệu ứng
+        // setTimeout(() => {
+        //   window.location.href = 'trang-thu.html';
+        // }, 2000);
         });
     </script>
 </body>
