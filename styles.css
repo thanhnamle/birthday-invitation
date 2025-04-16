@@ -1,178 +1,151 @@
-body {
+* {
     margin: 0;
     padding: 0;
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(to right, #ffe4ec, #ffeaf7);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    box-sizing: border-box;
+}
+
+body {
     height: 100vh;
-    overflow: hidden;
-  }
-  
-  .invite-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+    background-color: #3B4049;
+}
+
+.wrapper {
+    height: 200px;
+    width: 300px;
+    background-color: #F9F5F6;
     position: relative;
-    width: 700px;
-    height: 300px;
-  }
-  
-  .invite-envelope {
+    display: flex;
+    justify-content: center;
+    z-index: 0;
+}
+
+.lid {
     position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    border-right: 150px solid transparent;
+    border-bottom: 100px solid transparent;
+    border-left: 150px solid transparent;
+    transform-origin: top;
+    transition: transform 0.25s linear;
+}
+
+/* Lid when closed */
+.lid.one {
+    border-top: 100px solid #F8E8EE;
+    transform: rotateX(0deg);
+    z-index: 3;
+    transition-delay: 0.75s;
+}
+
+/* Lid when opened */
+.lid.two {
+    border-top: 100px solid #FFC0D9;
+    transform: rotateX(90deg);
+    z-index: 1;
+    transition-delay: 0.5s;
+}
+
+.envelope {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    border-top: 100px solid transparent;
+    border-right: 150px solid #FDCEDF;
+    border-bottom: 100px solid #FDCEDF;
+    border-left: 150px solid #F2BED1;
+    z-index: 3;
+}
+
+.envelope-body {
     width: 100%;
     height: 100%;
-    background-color: #ff69b4;
-    color: white;
-    font-size: 28px;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 20px;
-    cursor: pointer;
-    z-index: 10;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-    transition: transform 0.6s ease;
-  }
-  
-  .invite-envelope.opened {
-    transform: scale(0) rotateY(90deg);
-  }
-  
-  .invite-card {
-    width: 100%;
-    height: 100%;
-    background-color: #fff0f6;
+    background-color: #a0d2f3;
+    border-radius: 5px;
     position: relative;
-    border-radius: 20px;
     overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    perspective: 1000px;
-  }
-  
-  .invite-front {
-    width: 50%;
-    height: 100%;
+}
+
+.envelope-flap {
     position: absolute;
     top: 0;
-    background: linear-gradient(135deg, #ff7eb9, #ff65a3);
-    z-index: 5;
-    transition: transform 1s ease;
-  }
-  
-  .left-door {
     left: 0;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-    transform-origin: left;
-  }
-  
-  .right-door {
-    right: 0;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-    transform-origin: right;
-  }
-  
-  .invite-card.open .left-door {
-    transform: rotateY(-100deg);
-  }
-  
-  .invite-card.open .right-door {
-    transform: rotateY(100deg);
-  }
-  
-  .invite-content {
-    opacity: 0;
-    z-index: 1;
-    padding: 30px;
-    text-align: center;
-    animation: popIn 1s ease forwards;
-    animation-delay: 1.2s;
-  }
-  
-  .animated-text {
-    font-size: 28px;
-    color: #ff4081;
-    animation: floatText 2s ease-in-out infinite alternate;
-  }
-  
-  .confirm-btn {
-    margin-top: 20px;
-    padding: 10px 25px;
-    font-size: 16px;
-    background-color: #ff65a3;
-    color: white;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    transition: transform 0.3s ease, background-color 0.3s;
-  }
-  
-  .confirm-btn:hover {
-    transform: scale(1.05);
-    background-color: #ff4081;
-  }
-  
-  @keyframes popIn {
-    from {
-      opacity: 0;
-      transform: scale(0.8);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-  
-  @keyframes floatText {
-    from {
-      transform: translateY(0px);
-    }
-    to {
-      transform: translateY(-8px);
-    }
-  }
-  
-  .confetti-piece {
+    width: 100%;
+    height: 40%;
+    background-color: #4169e1;
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    transform-origin: top;
+    transition: transform 0.6s ease;
+}
+
+.envelope.opening .envelope-flap {
+    transform: rotateX(180deg);
+}
+
+.letter {
     position: absolute;
-    width: 10px;
-    height: 10px;
-    background-color: red;
+    width: 90%;
+    height: 90%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border-radius: 3px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 16px;
+    line-height: 1.5;
     opacity: 0;
-    animation: fallConfetti 4s linear forwards;
-  }
-  
-  @keyframes fallConfetti {
-    0% {
-      transform: translateY(-100px) rotate(0deg);
-      opacity: 1;
-    }
-    100% {
-      transform: translateY(400px) rotate(360deg);
-      opacity: 0;
-    }
-  }
-.character-popup {
-position: absolute;
-top: -180px;
-left: 50%;
-transform: translateX(-50%) scale(0.8);
-width: 150px;
-opacity: 0;
-transition: all 1s ease;
-z-index: 2;
+    transition: opacity 1s ease;
+    z-index: 1;
 }
 
-.invite-card.open .character-popup {
-top: -60px;
-opacity: 1;
-animation: bounceChar 2s ease infinite;
+.letter.visible {
+    opacity: 1;
 }
 
-@keyframes bounceChar {
-0% { transform: translateX(-50%) translateY(0) scale(0.85); }
-50% { transform: translateX(-50%) translateY(-10px) scale(0.9); }
-100% { transform: translateX(-50%) translateY(0) scale(0.85); }
-}  
+.envelope.hidden {
+    opacity: 0;
+    transform: translateY(-20px);
+    pointer-events: none;
+}
+
+/*.letter p {*/
+/*    text-align: center;*/
+/*    font-size: 30px;*/
+/*    margin-top: 30px;*/
+/*    color: #3B4049;*/
+/*}*/
+
+/*.wrapper:hover .lid.one {*/
+/*    transform: rotateX(90deg);*/
+/*    transition-delay: 0s;*/
+/*}*/
+
+/*.wrapper:hover .lid.two {*/
+/*    transform: rotateX(180deg);*/
+/*    transition-delay: 0.25s;*/
+/*}*/
+
+/*.wrapper:hover .letter {*/
+/*    transform: translateY(-50px);*/
+/*    transition-delay: 0.5s;*/
+/*}*/
+.instructions{
+    display: inline-block;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+    color: #ccc;
+    font-size: 14px;
+}

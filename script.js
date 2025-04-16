@@ -1,44 +1,23 @@
-const envelope = document.getElementById('envelopeTrigger');
-const card = document.getElementById('inviteCard');
-const rsvp = document.getElementById('rsvpConfirm');
+const envelope = document.getElementById('envelope-trigger');
+const letter = document.getElementById('letter');
 
-envelope.addEventListener('click', () => {
-  envelope.classList.add('opened');
+envelope.addEventListener('click', function() {
+  // Bước 1: Mở nắp phong bì
+  this.classList.add('opening');
+
+  // Bước 2: Sau khi mở nắp, làm mờ dần phong bì
   setTimeout(() => {
-    card.classList.add('open');
-    showConfetti();
-  }, 700);
-});
+    this.classList.add('hidden');
 
-rsvp.addEventListener('click', () => {
-  alert('🎉 Cảm ơn bạn đã xác nhận! Mong gặp lại bạn tại buổi tiệc nhé!');
-});
-
-function showConfetti() {
-  const container = document.body;
-  const colors = ['#ff7eb9', '#7afcff', '#fff740', '#b9fbc0', '#fcd5ce'];
-  const shapes = ['square', 'circle'];
-
-  for (let i = 0; i < 60; i++) {
-    const confetti = document.createElement('div');
-    confetti.classList.add('confetti-piece');
-
-    const size = Math.random() * 8 + 6;
-    const color = colors[Math.floor(Math.random() * colors.length)];
-    const shape = shapes[Math.floor(Math.random() * shapes.length)];
-
-    confetti.style.backgroundColor = color;
-    confetti.style.left = Math.random() * 100 + 'vw';
-    confetti.style.top = Math.random() * -100 + 'px';
-
-    if (shape === 'circle') {
-      confetti.style.borderRadius = '50%';
-    }
-
-    container.appendChild(confetti);
-
+    // Bước 3: Hiện dần lá thư
     setTimeout(() => {
-      confetti.remove();
-    }, 4000);
-  }
-}
+      letter.classList.add('visible');
+    }, 300);
+
+  }, 600);
+
+  // Nếu muốn chuyển trang sau khi hoàn thành hiệu ứng
+  // setTimeout(() => {
+  //   window.location.href = 'trang-thu.html';
+  // }, 2000);
+});

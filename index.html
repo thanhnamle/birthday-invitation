@@ -1,32 +1,52 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Thiệp mời sinh nhật</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Birthday</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="invite-container">
-    <div class="invite-envelope" id="envelopeTrigger">✨ Nhấn để mở thiệp ✨</div>
+    <div class="invite-container">
+        <div class="wrapper">
+            <div class="lid one"></div>
+            <div class="lid two"></div>
+            <div class="envelope" id="envelope-trigger">
+                <div class="envelope-body">
+                    <div class="envelope-flap" id="flap"></div>
+                </div>
+            </div>
+        </div>
+        <div class="letter" id="letter">
+            Nội dung lá thư
+        </div>
 
-    <div class="invite-card" id="inviteCard">
-      <div class="invite-front left-door"></div>
-      <div class="invite-front right-door"></div>
-
-      <img src="bfb0b74b-4721-4508-8e74-9182bb264c1e.png" alt="character" class="character-popup" id="characterImg" />
-
-      <div class="invite-content">
-        <h1 class="animated-text">🎉 Mời bạn đến dự tiệc sinh nhật! 🎉</h1>
-        <p><strong>Của:</strong> Nguyễn Văn A</p>
-        <p><strong>Tuổi:</strong> 25</p>
-        <p><strong>Thời gian:</strong> 20/05/2025 - 18:30</p>
-        <p><strong>Địa điểm:</strong> Nhà hàng ABC<br>123 Đường XYZ, Quận 1, TP.HCM</p>
-        <button class="confirm-btn" id="rsvpConfirm">Xác nhận tham dự</button>
-      </div>
+        <div class="instructions">Nhấp vào để mở</div>
     </div>
-  </div>
+    <script>
+        const envelope = document.getElementById('envelope');
+        const letter = document.getElementById('letter');
 
-  <script src="script.js"></script>
+        envelope.addEventListener('click', function() {
+            // Bước 1: Mở nắp phong bì
+            this.classList.add('opening');
+
+            // Bước 2: Sau khi mở nắp, làm mờ dần phong bì
+            setTimeout(() => {
+                this.classList.add('hidden');
+
+                // Bước 3: Hiện dần lá thư
+                setTimeout(() => {
+                    letter.classList.add('visible');
+                }, 300);
+
+            }, 600);
+
+            // Nếu muốn chuyển trang sau khi hoàn thành hiệu ứng
+            // setTimeout(() => {
+            //   window.location.href = 'trang-thu.html';
+            // }, 2000);
+        });
+    </script>
 </body>
 </html>
