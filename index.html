@@ -1,40 +1,32 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thiệp mời sinh nhật</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thiệp mời sinh nhật</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <div class="card">
-        <div class="envelope">
-            Nhấn để mở thiệp
-        </div>
-        <div class="card-front">
-            <div class="decorations">
-                <div class="balloon"></div>
-                <div class="balloon"></div>
-                <div class="balloon"></div>
-                <div class="balloon"></div>
-            </div>
-            <h1>Lời mời sinh nhật</h1>
-            <div class="cake-icon">🎂</div>
-            <p>Chạm để mở thiệp</p>
-            <button class="open-text">Mở thiệp</button>
-        </div>
-        <div class="card-inside">
-            <h2>Mời bạn đến dự</h2>
-            <h1>Tiệc Sinh Nhật</h1>
-            <p>Của: <span id="birthday-person">Nguyễn Văn A</span></p>
-            <p>Tuổi: <span id="age">25</span></p>
-            <p class="date">Ngày: 20/05/2025 - 18:30</p>
-            <p class="location">Địa điểm: Nhà hàng ABC<br>123 Đường XYZ, Quận 1, TP.HCM</p>
-            <p>Rất mong bạn có thể đến tham dự!</p>
-            <button class="button" id="rsvp-btn">Xác nhận tham dự</button>
-        </div>
-    </div>
+  <div class="invite-container">
+    <div class="invite-envelope" id="envelopeTrigger">✨ Nhấn để mở thiệp ✨</div>
 
-    <script src="script.js"></script>
+    <div class="invite-card" id="inviteCard">
+      <div class="invite-front left-door"></div>
+      <div class="invite-front right-door"></div>
+
+      <img src="bfb0b74b-4721-4508-8e74-9182bb264c1e.png" alt="character" class="character-popup" id="characterImg" />
+
+      <div class="invite-content">
+        <h1 class="animated-text">🎉 Mời bạn đến dự tiệc sinh nhật! 🎉</h1>
+        <p><strong>Của:</strong> Nguyễn Văn A</p>
+        <p><strong>Tuổi:</strong> 25</p>
+        <p><strong>Thời gian:</strong> 20/05/2025 - 18:30</p>
+        <p><strong>Địa điểm:</strong> Nhà hàng ABC<br>123 Đường XYZ, Quận 1, TP.HCM</p>
+        <button class="confirm-btn" id="rsvpConfirm">Xác nhận tham dự</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
