@@ -69,6 +69,19 @@
     flex-direction: column;
     justify-content: space-between;
   }
+
+  .letter_content::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0) 25%, rgba(215, 227, 239, 0.7) 55%, #d7e3ef 100%);
+    border-radius: 5px;
+    z-index: -1;
+    opacity: 0.5;
+  }
   
   .letter:after {
     content: "";
@@ -204,6 +217,7 @@
   }
   body {
     background-color: #a8e2ff;
+    margin: 10%;
   }
   
   .envlope-wrapper {
@@ -212,6 +226,7 @@
   
   .reset {
     text-align: center;
+    position: relative;
   }
   
   .reset button {

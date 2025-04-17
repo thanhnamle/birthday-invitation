@@ -14,6 +14,8 @@ $( document ).ready(function() {
         close();
     });
 
+    
+
     function open() {
         envelope.addClass("open")
            .removeClass("close");
