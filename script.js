@@ -17,12 +17,16 @@ $( document ).ready(function() {
     
 
     function open() {
-        envelope.addClass("open")
-           .removeClass("close");
+        envelope.addClass("open").removeClass("close");
+        // Show letter content after a delay to match the animation timing
+        setTimeout(function() {
+            letter_content.addClass("show");
+        }, 600); // 600ms delay to match the letter animation
     }
+    
     function close() {
-        envelope.addClass("close")
-           .removeClass("open");
+        envelope.addClass("close").removeClass("open");
+        letter_content.removeClass("show");
     }
    
 });

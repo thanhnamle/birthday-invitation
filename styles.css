@@ -220,8 +220,16 @@
     margin: 10%;
   }
   
+  .letter_content .show {
+    opacity: 1;
+    transform: translateY(-170px); /* Move up to be visible */
+    z-index: 10; /* Ensure it's above everything */
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
   .envlope-wrapper {
     height: 380px;
+    position: relative;
   }
   
   .reset {
