@@ -1,13 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Birthday</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Animation styles */
+        .birthday-animations {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 100;
+            overflow: hidden;
+        }
+
+        .balloon {
+            position: absolute;
+            bottom: -100px;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            animation: floatUp linear forwards;
+            z-index: 101;
+        }
+
+        .balloon-string {
+            position: absolute;
+            width: 1px;
+            height: 100px;
+            background-color: rgba(0, 0, 0, 0.3);
+            top: 100%;
+            left: 50%;
+        }
+
+        .confetti {
+            position: absolute;
+            top: -20px;
+            animation: fallDown linear forwards;
+            z-index: 102;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            25% {
+                transform: translateY(-25vh) rotate(5deg);
+            }
+            50% {
+                transform: translateY(-50vh) rotate(-5deg);
+            }
+            75% {
+                transform: translateY(-75vh) rotate(5deg);
+            }
+            100% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes fallDown {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* Optional: Add some sparkles */
+        .sparkle {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='gold' d='M32 0l8 24h24l-20 16 8 24-20-16-20 16 8-24-20-16h24z'/%3E%3C/svg%3E");
+            background-size: contain;
+            animation: twinkle 1s ease-in-out infinite alternate;
+            z-index: 103;
+        }
+
+        @keyframes twinkle {
+            0% {
+                opacity: 0.3;
+                transform: scale(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="envlope-wrapper">
+<div class="envlope-wrapper">
     <div id="envelope" class="close">
         <div class="front flap"></div>
         <div class="front pocket"></div>
@@ -28,7 +118,7 @@
             <p>Please let me know if you can make it by [RSVP date]. I truly hope you can join me - it wouldn't be the same without you there!</p>
             <p>Looking forward to celebrating together!</p>
             <p>Mai Anh Xink</p>
-            <a href="#" class="confirm_button">Confirm participation </a>
+            <a href="images.html" class="confirm_button">Confirm participation </a>
         </div>
     </div>
 </div>
@@ -36,6 +126,115 @@
     <button id="open">Open</button>
     <button id="reset">Close</button>
 </div>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script><script  src="./script.js"></script>
+<div class="birthday-animations"></div>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+<script src="./script.js"></script>
+<script>
+    // Animation script - Add this to your page without modifying original code
+    $(document).ready(function() {
+        // Create function to generate animations
+        function createAnimations() {
+            // Clear existing animations
+            const container = $('.birthday-animations');
+            container.empty();
+
+            // Create balloons
+            for (let i = 0; i < 12; i++) {
+                const balloon = $('<div>').addClass('balloon');
+
+                // Random properties
+                const left = Math.random() * 80 + 10;
+                const size = Math.random() * 40 + 60;
+                const duration = Math.random() * 4 + 6;
+                const delay = Math.random() * 1.5;
+                const hue = Math.floor(Math.random() * 360);
+
+                balloon.css({
+                    'left': `${left}%`,
+                    'width': `${size}px`,
+                    'height': `${size * 1.2}px`,
+                    'background-color': `hsl(${hue}, 80%, 60%)`,
+                    'animation-duration': `${duration}s`,
+                    'animation-delay': `${delay}s`
+                });
+
+                // Add string to balloon
+                const string = $('<div>').addClass('balloon-string');
+                balloon.append(string);
+
+                container.append(balloon);
+            }
+
+            // Create confetti
+            for (let i = 0; i < 50; i++) {
+                const confetti = $('<div>').addClass('confetti');
+
+                // Random properties
+                const left = Math.random() * 100;
+                const size = Math.random() * 8 + 4;
+                const duration = Math.random() * 2 + 3;
+                const delay = Math.random() * 2;
+                const hue = Math.floor(Math.random() * 360);
+                const rotation = Math.random() * 360;
+
+                confetti.css({
+                    'left': `${left}%`,
+                    'width': `${size}px`,
+                    'height': `${size}px`,
+                    'background-color': `hsl(${hue}, 80%, 70%)`,
+                    'animation-duration': `${duration}s`,
+                    'animation-delay': `${delay}s`,
+                    'transform': `rotate(${rotation}deg)`
+                });
+
+                container.append(confetti);
+            }
+
+            // Add some sparkles
+            for (let i = 0; i < 15; i++) {
+                const sparkle = $('<div>').addClass('sparkle');
+                const left = Math.random() * 100;
+                const top = Math.random() * 100;
+                const size = Math.random() * 10 + 5;
+                const delay = Math.random() * 1;
+
+                sparkle.css({
+                    'left': `${left}%`,
+                    'top': `${top}%`,
+                    'width': `${size}px`,
+                    'height': `${size}px`,
+                    'animation-delay': `${delay}s`
+                });
+
+                container.append(sparkle);
+            }
+        }
+
+        // Hook into the letter content "show" class
+        const originalOpen = window.open;
+
+        // Watch for changes to letter content class
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.attributeName === 'class') {
+                    const letterContent = $('#content');
+                    if (letterContent.hasClass('show')) {
+                        // Trigger animations when letter is shown
+                        setTimeout(() => {
+                            createAnimations();
+                        }, 300);
+                    }
+                }
+            });
+        });
+
+        // Observe letter_content element
+        const letterContentElement = document.getElementById('content');
+        if (letterContentElement) {
+            observer.observe(letterContentElement, { attributes: true });
+        }
+    });
+</script>
 </body>
 </html>

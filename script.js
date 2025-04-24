@@ -34,3 +34,13 @@ $( document ).ready(function() {
     }
    
 });
+
+$(document).ready(function() {
+    // Add click event to the confirmation button
+    $('.confirm_button').click(function(e) {
+        e.preventDefault(); // Prevent default link behavior
+
+        // Navigate to the celebration page
+        window.location.href = 'images.html';
+    });
+});
