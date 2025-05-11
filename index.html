@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Birthday</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Birthday Invitation</title>
     <style>
+        html {
+            width: 100%;
+            height: 120%;
+        }
         /* Animation styles */
         .birthday-animations {
             position: fixed;
@@ -73,31 +76,529 @@
             }
         }
 
-        /* Optional: Add some sparkles */
+        /* Enhanced sparkles */
         .sparkle {
             position: absolute;
-            width: 15px;
-            height: 15px;
+            width: 20px;
+            height: 20px;
             background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='gold' d='M32 0l8 24h24l-20 16 8 24-20-16-20 16 8-24-20-16h24z'/%3E%3C/svg%3E");
             background-size: contain;
-            animation: twinkle 1s ease-in-out infinite alternate;
+            animation: twinkle 1.5s ease-in-out infinite alternate;
             z-index: 103;
         }
 
         @keyframes twinkle {
             0% {
                 opacity: 0.3;
-                transform: scale(0.8);
+                transform: scale(0.8) rotate(0deg);
             }
             100% {
                 opacity: 1;
-                transform: scale(1.2);
+                transform: scale(1.2) rotate(15deg);
             }
+        }
+
+        /* Improved envelope styles - UPDATED COLORS */
+        #envelope {
+            position: relative;
+            width: 320px;
+            height: 200px;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+            margin-left: auto;
+            margin-right: auto;
+            top: 150px;
+            background-color: #ff1493; /* Changed to deep pink */
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        #envelope:hover {
+            transform: translateY(-5px);
+        }
+
+        .front {
+            position: absolute;
+            width: 0;
+            height: 0;
+            z-index: 3;
+        }
+
+        .flap {
+            border-left: 160px solid transparent;
+            border-right: 160px solid transparent;
+            border-bottom: 92px solid transparent;
+            border-top: 108px solid #ff1493; /* Changed to deep pink */
+            transform-origin: top;
+            pointer-events: none;
+            background-image: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 50%);
+        }
+
+        .pocket {
+            border-left: 160px solid #ff69b4; /* Changed to hot pink */
+            border-right: 160px solid #ff69b4; /* Changed to hot pink */
+            border-bottom: 100px solid #ff69b4; /* Changed to hot pink */
+            border-top: 100px solid transparent;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+            background-image: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 50%);
+        }
+
+        /* Enhanced letter styles */
+        .letter {
+            position: relative;
+            background-color: #fff;
+            width: 92%;
+            margin-left: auto;
+            margin-right: auto;
+            height: 92%;
+            top: 4%;
+            border-radius: 8px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.18);
+            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-origin: center bottom;
+            background-image: linear-gradient(135deg, rgba(255,255,255,1) 0%, #fafafa 100%);
+            pointer-events: none;
+        }
+
+        .letter.jump {
+            transform: translateY(-250px) scale(2.4);
+            z-index: 10;
+        }
+
+        /* Beautiful letter content styles */
+        .letter_content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            margin-left: -20px;
+            margin-top: -10px;
+            width: 100%;
+            max-width: 100%;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 25px rgba(0,0,0,0.15);
+            padding: 20px;
+            font-size: 16px;
+            line-height: 1.5;
+            z-index: 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background-image: linear-gradient(to bottom, #ffffff 0%, #fff9fa 100%);
+            font-family: 'Georgia', serif;
+            border: 1px solid rgba(255, 20, 147, 0.2); /* Updated border color */
+            pointer-events: auto;
+        }
+
+        /* Gorgeous header with decorative elements */
+        .letter_content h1 {
+            font-size: 32px;
+            color: #ff1493; /* Changed to deep pink */
+            margin-top: 0;
+            margin-bottom: 15px;
+            text-align: center;
+            font-family: 'Brush Script MT', cursive;
+            text-shadow: 2px 2px 3px rgba(0,0,0,0.1);
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .letter_content h1::before,
+        .letter_content h1::after {
+            content: "✨";
+            position: absolute;
+            font-size: 24px;
+            color: gold;
+        }
+
+        .letter_content h1::before {
+            left: 30px;
+            top: 5px;
+        }
+
+        .letter_content h1::after {
+            right: 30px;
+            top: 5px;
+        }
+
+        /* Decorative border around the content */
+        .letter_content::before {
+            content: "";
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border: 2px dashed rgba(255, 20, 147, 0.2); /* Updated border color */
+            border-radius: 4px;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .letter_content p {
+            margin-bottom: 12px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Styling for greeting and signature */
+        .letter_content p:first-of-type,
+        .letter_content p:last-of-type {
+            font-style: italic;
+            color: #ff1493; /* Changed to deep pink */
+        }
+
+        .letter_content p:last-of-type {
+            text-align: right;
+            margin-top: 20px;
+            font-size: 20px;
+            font-family: 'Brush Script MT', cursive;
+        }
+
+        /* Add decorative corner elements */
+        .corner {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            z-index: 5;
+        }
+
+        .corner-tl {
+            top: 5px;
+            left: 5px;
+            border-top: 3px solid #ff1493; /* Changed to deep pink */
+            border-left: 3px solid #ff1493; /* Changed to deep pink */
+            border-top-left-radius: 8px;
+        }
+
+        .corner-tr {
+            top: 5px;
+            right: 5px;
+            border-top: 3px solid #ff1493; /* Changed to deep pink */
+            border-right: 3px solid #ff1493; /* Changed to deep pink */
+            border-top-right-radius: 8px;
+        }
+
+        .corner-bl {
+            bottom: 5px;
+            left: 5px;
+            border-bottom: 3px solid #ff1493; /* Changed to deep pink */
+            border-left: 3px solid #ff1493; /* Changed to deep pink */
+            border-bottom-left-radius: 8px;
+        }
+
+        .corner-br {
+            bottom: 5px;
+            right: 5px;
+            border-bottom: 3px solid #ff1493; /* Changed to deep pink */
+            border-right: 3px solid #ff1493; /* Changed to deep pink */
+            border-bottom-right-radius: 8px;
+        }
+
+        /* Gorgeous invitation details with icons */
+        .invitation-details {
+            background-color: rgba(255, 228, 225, 0.4); /* Lighter pink background */
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            border-left: 3px solid #ff1493; /* Changed to deep pink */
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .detail-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .detail-icon {
+            margin-right: 10px;
+            color: #ff1493; /* Changed to deep pink */
+            font-size: 16px;
+        }
+
+        /* Enhanced confirmation button styles - FIXED */
+        .confirm_button {
+            display: block;
+            text-decoration: none;
+            background: linear-gradient(145deg, #ff69b4, #ff1493); /* Hot pink to deep pink gradient */
+            color: #fff;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            margin: 20px auto 10px auto;
+            box-shadow: 0 6px 12px rgba(255, 20, 147, 0.4);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            max-width: 250px;
+            letter-spacing: 1px;
+            pointer-events: auto;
+            z-index: 20;
+        }
+
+        .confirm_button:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: all 0.6s;
+        }
+
+        .confirm_button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 20, 147, 0.5);
+            background: linear-gradient(145deg, #ff1493, #ff69b4); /* Reversed gradient on hover */
+        }
+
+        .confirm_button:active {
+            transform: translateY(1px);
+            box-shadow: 0 3px 6px rgba(255, 20, 147, 0.3);
+        }
+
+        .confirm_button:hover:before {
+            left: 100%;
+        }
+
+        /* Animation for button when letter opens */
+        @keyframes buttonPop {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            70% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Modify letter_content.show to include button animation */
+        .letter_content.show .confirm_button {
+            animation: buttonPop 0.8s ease 0.4s forwards;
+            opacity: 0;
+            position: relative;
+        }
+
+        /* Add festive effects to the button */
+        .confirm_button:after {
+            content: "🎉";
+            margin-left: 10px;
+            font-size: 20px;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .confirm_button:hover:after {
+            transform: rotate(15deg) scale(1.3);
+        }
+
+        .words {
+            position: absolute;
+            left: 10%;
+            width: 80%;
+            height: 14%;
+            background-color: #EEEFF0;
+        }
+
+        .words.line1 {
+            top: 15%;
+            width: 20%;
+            height: 7%;
+        }
+
+        .words.line2 {
+            top: 30%;
+            text-align: center;
+        }
+
+        .words.line3 {
+            top: 50%;
+        }
+
+        .words.line4 {
+            top: 70%;
+        }
+
+        .open .flap {
+            transform: rotateX(180deg);
+            transition: transform 0.4s ease, z-index 0.6s;
+            z-index: 1;
+        }
+
+        .close .flap {
+            transform: rotateX(0deg);
+            transition: transform 0.4s 0.6s ease, z-index 1s;
+            z-index: 5;
+        }
+
+        .close .letter {
+            transform: translateY(0px) scale(1);
+            transition: transform 0.4s ease, z-index 1s;
+            z-index: 1;
+        }
+
+        .open .letter {
+            transform: translateY(-70px);
+            transition: transform 0.4s 0.6s ease, z-index 0.6s;
+            z-index: 2;
+        }
+
+        .letter_content.show {
+            opacity: 1;
+            transform: translateY(-30px) scale(1.2);
+            z-index: 20;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+            pointer-events: auto;
+        }
+
+        /* Balloon animations */
+        .a1 {
+            left: 20%;
+            transform: scale(0.6);
+            opacity: 1;
+            -webkit-animation: slideUp 4s linear 1, sideSway 2s ease-in-out 4 alternate;
+            animation: slideUp 4s linear 1, sideSway 2s ease-in-out 4 alternate;
+            -moz-animation: slideUp 4s linear 1, sideSway 2s ease-in-out 4 alternate;
+            -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+            -webkit-animation-delay: 0.7s;
+            animation-delay: 0.7s;
+        }
+
+        .a2 {
+            left: 55%;
+            transform: scale(1);
+            opacity: 1;
+            -webkit-animation: slideUp 5s linear 1, sideSway 4s ease-in-out 2 alternate;
+            animation: slideUp 5s linear 1, sideSway 4s ease-in-out 2 alternate;
+            -moz-animation: slideUp 5s linear 1, sideSway 4s ease-in-out 2 alternate;
+            -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+            -webkit-animation-delay: 0.7s;
+            animation-delay: 0.7s;
+        }
+
+        .a3 {
+            left: 10%;
+            transform: scale(0.8);
+            opacity: 1;
+            -webkit-animation: slideUp 7s linear 1, sideSway 2s ease-in-out 6 alternate;
+            animation: slideUp 7s linear 1, sideSway 2s ease-in-out 6 alternate;
+            -moz-animation: slideUp 7s linear 1, sideSway 2s ease-in-out 6 alternate;
+            -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+            -webkit-animation-delay: 0.7s;
+            animation-delay: 0.7s;
+        }
+
+        @-webkit-keyframes slideUp {
+            0% {
+                top: 0;
+            }
+            100% {
+                top: -600px;
+            }
+        }
+        @keyframes slideUp {
+            0% {
+                top: 0;
+            }
+            100% {
+                top: -600px;
+            }
+        }
+        @-webkit-keyframes sideSway {
+            0% {
+                margin-left: 0px;
+            }
+            100% {
+                margin-left: 50px;
+            }
+        }
+        @keyframes sideSway {
+            0% {
+                margin-left: 0px;
+            }
+            100% {
+                margin-left: 50px;
+            }
+        }
+
+        /* Enhanced background */
+        body {
+            background: linear-gradient(135deg, #ffe6f2 0%, #ffb6c1 100%); /* Updated background gradient */
+            margin: 10%;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .envlope-wrapper {
+            height: 520px;
+            position: relative;
+        }
+
+        /* Decorative elements for envelope */
+        .envelope-decoration {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            color: #ff1493; /* Changed to deep pink */
+            opacity: 0.4;
+            z-index: 0;
+            font-size: 24px;
+        }
+
+        .decoration-1 {
+            top: 100px;
+            left: 15%;
+            transform: rotate(-15deg);
+        }
+
+        .decoration-2 {
+            top: 80px;
+            right: 15%;
+            transform: rotate(20deg);
+        }
+
+        .decoration-3 {
+            bottom: 100px;
+            left: 10%;
+            transform: rotate(30deg);
+        }
+
+        .decoration-4 {
+            bottom: 120px;
+            right: 10%;
+            transform: rotate(-25deg);
         }
     </style>
 </head>
 <body>
 <div class="envlope-wrapper">
+    <!-- Decorative elements around envelope -->
+    <div class="envelope-decoration decoration-1">🎂</div>
+    <div class="envelope-decoration decoration-2">🎁</div>
+    <div class="envelope-decoration decoration-3">🎈</div>
+    <div class="envelope-decoration decoration-4">🎊</div>
+
     <div id="envelope" class="close">
         <div class="front flap"></div>
         <div class="front pocket"></div>
@@ -108,30 +609,102 @@
             <div class="words line4"></div>
         </div>
         <div id="content" class="letter_content">
-            <h1>Happy Birthday</h1>
-            <p>Dear Betties</p>
-            <p>I'm so excited to invite you to my birthday celebration!</p>
-            <p>Join me for a day of fun, laughter, and making memories together. We'll have good food, great music, and even better company.</p>
-            <p>When: [Date] at [Time] <br>
-                Where: [Location] <br>
-                What to bring: Just your wonderful self and your party mood!</p>
-            <p>Please let me know if you can make it by [RSVP date]. I truly hope you can join me - it wouldn't be the same without you there!</p>
-            <p>Looking forward to celebrating together!</p>
-            <p>Mai Anh Xink</p>
-            <a href="images.html" class="confirm_button">Confirm participation </a>
+            <!-- Decorative corners -->
+            <div class="corner corner-tl"></div>
+            <div class="corner corner-tr"></div>
+            <div class="corner corner-bl"></div>
+            <div class="corner corner-br"></div>
+
+            <h1>✨ Birthday Invitation ✨</h1>
+            <p>Thân mời, Bảo Quỳnh</p>
+
+            <div class="invitation-details">
+                <div class="detail-item">
+                    <span class="detail-icon">📅</span>
+                    <span>Date: 25/05/2025</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-icon">⏰</span>
+                    <span>Time: 5:00 PM</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-icon">📍</span>
+                    <span>Address: SOM Thai</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-icon">🎒</span>
+                    <span>Dresscode: Black - White</span>
+                </div>
+            </div>
+
+
+            <p>selna</p>
+            <a href="images.html" class="confirm_button">Confirm participation</a>
         </div>
     </div>
-</div>
-<div class="reset">
-    <button id="open">Open</button>
 </div>
 <div class="birthday-animations"></div>
 
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
-<script src="./script.js"></script>
 <script>
-    // Animation script - Add this to your page without modifying original code
     $(document).ready(function() {
+        var envelope = $('#envelope');
+        var btn_open = $("#open");
+        var letter = $('.letter');
+        var letter_content = $('#content');
+        var isOpen = false;
+
+        // Function to open the envelope
+        function open() {
+            if (isOpen) return; // Prevent multiple triggers
+            isOpen = true;
+
+            envelope.addClass("open").removeClass("close");
+
+            // Show letter content after a delay to match the animation timing
+            setTimeout(function() {
+                letter.addClass("jump");
+                setTimeout(function() {
+                    letter_content.addClass("show");
+                }, 600);
+            }, 400);
+        }
+
+        // Function to close the envelope
+        function close() {
+            if (!isOpen) return; // Prevent multiple triggers
+            isOpen = false;
+
+            letter_content.removeClass("show");
+            setTimeout(function() {
+                letter.removeClass("jump");
+                setTimeout(function() {
+                    envelope.addClass("close").removeClass("open");
+                }, 300);
+            }, 300);
+        }
+
+        // Add click handlers with proper event delegation
+        envelope.on('click', function(e) {
+            e.stopPropagation(); // Prevent event bubbling
+            open();
+        });
+
+        btn_open.on('click', function(e) {
+            e.preventDefault(); // Prevent default button behavior
+            e.stopPropagation(); // Prevent event bubbling
+            open();
+        });
+
+        // Handle confirmation button click - UPDATED to navigate to images.html
+        $('.confirm_button').on('click', function(e) {
+            // Now allowing the default navigation behavior to work
+            // No preventDefault() to allow page navigation
+            // Just providing feedback before navigation
+            console.log("Navigating to images.html...");
+            // The browser will handle the href="images.html" navigation
+        });
+
         // Create function to generate animations
         function createAnimations() {
             // Clear existing animations
@@ -139,12 +712,12 @@
             container.empty();
 
             // Create balloons
-            for (let i = 0; i < 12; i++) {
+            for (let i = 0; i < 15; i++) {
                 const balloon = $('<div>').addClass('balloon');
 
                 // Random properties
                 const left = Math.random() * 80 + 10;
-                const size = Math.random() * 40 + 60;
+                const size = Math.random() * 50 + 60;
                 const duration = Math.random() * 4 + 6;
                 const delay = Math.random() * 1.5;
                 const hue = Math.floor(Math.random() * 360);
@@ -166,21 +739,26 @@
             }
 
             // Create confetti
-            for (let i = 0; i < 50; i++) {
+            for (let i = 0; i < 70; i++) {
                 const confetti = $('<div>').addClass('confetti');
 
                 // Random properties
                 const left = Math.random() * 100;
-                const size = Math.random() * 8 + 4;
+                const size = Math.random() * 10 + 5;
                 const duration = Math.random() * 2 + 3;
                 const delay = Math.random() * 2;
                 const hue = Math.floor(Math.random() * 360);
                 const rotation = Math.random() * 360;
 
+                // Random shapes for confetti
+                const shapes = ['square', 'rectangle', 'circle'];
+                const shape = shapes[Math.floor(Math.random() * shapes.length)];
+
                 confetti.css({
                     'left': `${left}%`,
                     'width': `${size}px`,
-                    'height': `${size}px`,
+                    'height': shape === 'rectangle' ? `${size * 2}px` : `${size}px`,
+                    'border-radius': shape === 'circle' ? '50%' : '0',
                     'background-color': `hsl(${hue}, 80%, 70%)`,
                     'animation-duration': `${duration}s`,
                     'animation-delay': `${delay}s`,
@@ -191,11 +769,11 @@
             }
 
             // Add some sparkles
-            for (let i = 0; i < 15; i++) {
+            for (let i = 0; i < 20; i++) {
                 const sparkle = $('<div>').addClass('sparkle');
                 const left = Math.random() * 100;
                 const top = Math.random() * 100;
-                const size = Math.random() * 10 + 5;
+                const size = Math.random() * 15 + 5;
                 const delay = Math.random() * 1;
 
                 sparkle.css({
@@ -210,10 +788,7 @@
             }
         }
 
-        // Hook into the letter content "show" class
-        const originalOpen = window.open;
-
-        // Watch for changes to letter content class
+        // Observe letter_content element
         const observer = new MutationObserver((mutations) => {
             mutations.forEach((mutation) => {
                 if (mutation.attributeName === 'class') {
@@ -228,7 +803,7 @@
             });
         });
 
-        // Observe letter_content element
+        // Start observing
         const letterContentElement = document.getElementById('content');
         if (letterContentElement) {
             observer.observe(letterContentElement, { attributes: true });

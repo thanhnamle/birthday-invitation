@@ -17,33 +17,35 @@
             background-color: #fce4ec;
             color: #333;
             overflow-x: hidden;
+            /* Set aspect ratio to match 16:9 */
+            max-width: 100vw;
         }
 
         .container {
-            max-width: 1200px;
+            width: 100%;
             margin: 0 auto;
-            padding: 20px;
+            padding: 15px;
         }
 
         /* Header Styles */
         header {
             text-align: center;
-            padding: 40px 0;
+            padding: 15px 0;
             position: relative;
         }
 
         h1 {
-            font-size: 3.5rem;
-            margin-bottom: 15px;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
             color: #e91e63;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
             animation: fadeInDown 1.5s ease-out;
         }
 
         .subtitle {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             color: #9c27b0;
-            margin-bottom: 30px;
+            margin-bottom: 15px;
             animation: fadeInUp 1.5s ease-out;
         }
 
@@ -55,178 +57,37 @@
         }
 
         .circle {
-            width: 20px;
-            height: 20px;
+            width: 15px;
+            height: 15px;
             border-radius: 50%;
             position: absolute;
             opacity: 0.7;
         }
 
         .square {
-            width: 15px;
-            height: 15px;
+            width: 10px;
+            height: 10px;
             position: absolute;
             opacity: 0.7;
             transform: rotate(45deg);
         }
 
-        /* Image Slider Section */
-        .slider-section {
-            margin: 40px 0;
-            padding: 30px;
+        /* Countdown Timer Section */
+        .countdown-section {
+            margin: 15px 0 25px;
+            padding: 20px;
             background-color: white;
             border-radius: 15px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
             animation: fadeIn 1s ease-out;
-        }
-
-        .slider-container {
-            position: relative;
-            width: 100%;
-            height: 500px;
-            overflow: hidden;
-            border-radius: 10px;
-            border: 10px solid #f8bbd0;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1), inset 0 0 20px rgba(0, 0, 0, 0.05);
-        }
-
-        .slider {
-            width: 100%;
-            height: 100%;
-            position: relative;
-        }
-
-        .slide {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 1s ease;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #f9f9f9;
-        }
-
-        .slide.active {
-            opacity: 1;
-        }
-
-        .slide img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-        }
-
-        .placeholder {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            color: #999;
-            background: linear-gradient(135deg, #f8bbd0 0%, #f48fb1 100%);
-        }
-
-        .placeholder i {
-            font-size: 4rem;
-            margin-bottom: 15px;
-        }
-
-        .placeholder p {
-            font-size: 1.2rem;
-        }
-
-        .slider-controls {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        .slider-btn {
-            background-color: #e91e63;
-            color: white;
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            margin: 0 10px;
-            cursor: pointer;
-            font-size: 1.2rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: all 0.3s ease;
-        }
-
-        .slider-btn:hover {
-            background-color: #c2185b;
-            transform: scale(1.1);
-        }
-
-        .slider-dots {
-            display: flex;
-            justify-content: center;
-            margin-top: 15px;
-        }
-
-        .dot {
-            width: 12px;
-            height: 12px;
-            background-color: #ccc;
-            border-radius: 50%;
-            margin: 0 5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .dot.active {
-            background-color: #e91e63;
-            transform: scale(1.2);
-        }
-
-        /* About Section */
-        .about-section {
-            display: flex;
-            flex-wrap: wrap;
-            margin: 40px 0;
-            padding: 30px;
-            background-color: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            animation: slideInRight 1s ease-out;
-        }
-
-        .about-content {
-            flex: 1;
-            padding: 20px;
-            min-width: 300px;
-        }
-
-        .about-content h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: #e91e63;
-        }
-
-        .about-content p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
-
-        .birthday-countdown {
-            background-color: #f8bbd0;
-            padding: 20px;
-            border-radius: 10px;
             text-align: center;
-            margin-top: 20px;
         }
 
         .countdown-title {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #e91e63;
+            font-weight: bold;
         }
 
         .countdown-timer {
@@ -248,67 +109,129 @@
         .countdown-label {
             font-size: 0.8rem;
             text-transform: uppercase;
+            color: #9c27b0;
         }
 
-        /* Fun Facts Section */
-        .facts-section {
-            margin: 40px 0;
-            padding: 30px;
+        /* Clickable Image Gallery Section - Optimized for 16:9 */
+        .gallery-section {
+            margin-bottom: 50px;
+            padding: 15px;
             background-color: white;
             border-radius: 15px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            animation: slideInLeft 1s ease-out;
+            animation: fadeIn 1s ease-out;
         }
 
-        .facts-title {
-            font-size: 2.2rem;
-            color: #e91e63;
+        .gallery-container {
+            position: relative;
+            width: 100%;
+            height: 700px;
+            /* Set aspect ratio to 16:9 with padding trick */
+            padding-bottom: 56.25%; /* 9/16 = 0.5625 */
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1), inset 0 0 20px rgba(0, 0, 0, 0.05);
+            cursor: pointer;
+        }
+
+        .gallery-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.7s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f9f9f9;
+        }
+
+        .gallery-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-image.active {
+            opacity: 1;
+        }
+
+        .placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: #fff;
+            background: linear-gradient(135deg, #f8bbd0 0%, #f48fb1 100%);
+        }
+
+        .placeholder i {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .placeholder p {
+            font-size: 1rem;
+        }
+
+        .gallery-instruction {
             text-align: center;
-            margin-bottom: 30px;
+            margin-top: 12px;
+            font-size: 1rem;
+            color: #e91e63;
         }
 
-        .facts-container {
+        /* About Section */
+        .about-section {
             display: flex;
             flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .fact-card {
-            background-color: #f8bbd0;
-            border-radius: 10px;
+            margin: 25px 0;
             padding: 20px;
-            width: 250px;
-            text-align: center;
-            transition: transform 0.3s ease;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            animation: slideInRight 1s ease-out;
         }
 
-        .fact-card:hover {
-            transform: translateY(-10px);
+        .about-content {
+            flex: 1;
+            padding: 15px;
+            min-width: 100%;
         }
 
-        .fact-icon {
-            font-size: 2.5rem;
-            color: #c2185b;
+        .about-content h2 {
+            font-size: 2rem;
             margin-bottom: 15px;
+            color: #e91e63;
         }
 
-        .fact-text {
+        .about-content p {
             font-size: 1rem;
             line-height: 1.5;
+            margin-bottom: 12px;
         }
 
         /* Footer */
         footer {
+            display: block;
             text-align: center;
-            padding: 30px 0;
-            margin-top: 40px;
+            padding: 20px 0;
             background-color: #f8bbd0;
             color: #c2185b;
         }
 
         footer p {
-            font-size: 1rem;
+            font-size: 0.9rem;
+        }
+
+        @media screen and (max-width: 900px) {
+            footer {
+                margin-top: 275px;
+            }
         }
 
         /* Animations */
@@ -366,7 +289,7 @@
                 transform: translateY(0);
             }
             50% {
-                transform: translateY(-15px);
+                transform: translateY(-10px);
             }
         }
 
@@ -375,22 +298,37 @@
             animation: float 4s ease-in-out infinite;
         }
 
-        /* Responsive Styles */
-        @media (max-width: 768px) {
+        /* Fix for orientation changes */
+        @media (orientation: landscape) {
+            .gallery-container {
+                padding-bottom: 56.25%; /* Maintain 16:9 ratio */
+            }
+        }
+
+        /* Media query for smaller phones */
+        @media (max-width: 480px) {
             h1 {
-                font-size: 2.5rem;
+                font-size: 2rem;
             }
 
             .subtitle {
-                font-size: 1.2rem;
+                font-size: 1rem;
             }
 
-            .slider-container {
-                height: 350px;
+            .countdown-number {
+                font-size: 1.5rem;
             }
 
-            .fact-card {
-                width: 100%;
+            .countdown-label {
+                font-size: 0.7rem;
+            }
+
+            .countdown-item {
+                margin: 0 5px;
+            }
+
+            .about-content h2 {
+                font-size: 1.8rem;
             }
         }
     </style>
@@ -403,132 +341,65 @@
 
 <div class="container">
     <header>
-        <h1>Happy Birthday Mai Anh!</h1>
-        <p class="subtitle">Celebrating the amazing person you are</p>
+        <h1>Happy Birthday</h1>
     </header>
 
-    <!-- Image Slider Section -->
-    <section class="slider-section">
-        <div class="slider-container">
-            <div class="slider" id="imageSlider">
-                <!-- Placeholder slides - will be replaced with real images -->
-                <div class="slide active">
-                    <div class="placeholder">
-                        <i class="fas fa-birthday-cake"></i>
-                        <p>Add Birthday Image Here</p>
-                    </div>
-                </div>
-                <div class="slide">
-                    <div class="placeholder">
-                        <i class="fas fa-smile"></i>
-                        <p>Add Celebration Image Here</p>
-                    </div>
-                </div>
-                <div class="slide">
-                    <div class="placeholder">
-                        <i class="fas fa-gift"></i>
-                        <p>Add Fun Memory Image Here</p>
-                    </div>
-                </div>
-                <div class="slide">
-                    <div class="placeholder">
-                        <i class="fas fa-heart"></i>
-                        <p>Add Special Moment Image Here</p>
-                    </div>
-                </div>
-                <div class="slide">
-                    <div class="placeholder">
-                        <i class="fas fa-star"></i>
-                        <p>Add Favorite Image Here</p>
-                    </div>
-                </div>
+    <!-- Countdown Timer Section -->
+    <section class="countdown-section">
+        <div class="countdown-title">Countdown to selna's Birthday</div>
+        <div class="countdown-timer" id="countdown">
+            <div class="countdown-item">
+                <div class="countdown-number" id="days">00</div>
+                <div class="countdown-label">Days</div>
             </div>
-        </div>
-
-        <div class="slider-controls">
-            <button class="slider-btn" id="prevBtn">
-                <i class="fas fa-chevron-left"></i>
-            </button>
-            <button class="slider-btn" id="nextBtn">
-                <i class="fas fa-chevron-right"></i>
-            </button>
-        </div>
-
-        <div class="slider-dots" id="sliderDots">
-            <span class="dot active" data-index="0"></span>
-            <span class="dot" data-index="1"></span>
-            <span class="dot" data-index="2"></span>
-            <span class="dot" data-index="3"></span>
-            <span class="dot" data-index="4"></span>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="about-section">
-        <div class="about-content">
-            <h2>All About Mai Anh</h2>
-            <p>Today we celebrate an incredible person who brings so much joy and light to our lives. Mai Anh is someone who knows how to make everyone around her smile with her warmth and kindness.</p>
-            <p>With her vibrant personality and infectious laughter, Mai Anh has a special way of turning ordinary moments into extraordinary memories. Whether she's sharing her creative ideas or listening with genuine interest, she makes everyone feel valued and appreciated.</p>
-            <p>Today is all about celebrating the amazing person she is and all the wonderful qualities that make her so special to everyone who knows her.</p>
-
-            <div class="birthday-countdown">
-                <div class="countdown-title">Countdown to the Big Day</div>
-                <div class="countdown-timer" id="countdown">
-                    <div class="countdown-item">
-                        <div class="countdown-number" id="days">00</div>
-                        <div class="countdown-label">Days</div>
-                    </div>
-                    <div class="countdown-item">
-                        <div class="countdown-number" id="hours">00</div>
-                        <div class="countdown-label">Hours</div>
-                    </div>
-                    <div class="countdown-item">
-                        <div class="countdown-number" id="minutes">00</div>
-                        <div class="countdown-label">Minutes</div>
-                    </div>
-                    <div class="countdown-item">
-                        <div class="countdown-number" id="seconds">00</div>
-                        <div class="countdown-label">Seconds</div>
-                    </div>
-                </div>
+            <div class="countdown-item">
+                <div class="countdown-number" id="hours">00</div>
+                <div class="countdown-label">Hours</div>
+            </div>
+            <div class="countdown-item">
+                <div class="countdown-number" id="minutes">00</div>
+                <div class="countdown-label">Minutes</div>
+            </div>
+            <div class="countdown-item">
+                <div class="countdown-number" id="seconds">00</div>
+                <div class="countdown-label">Seconds</div>
             </div>
         </div>
     </section>
 
-    <!-- Fun Facts Section -->
-    <section class="facts-section">
-        <h2 class="facts-title">Fun Facts About Mai Anh</h2>
-        <div class="facts-container">
-            <div class="fact-card">
-                <div class="fact-icon">
-                    <i class="fas fa-music"></i>
-                </div>
-                <p class="fact-text">Her favorite song always gets her dancing, no matter where she is!</p>
+    <!-- Clickable Image Gallery Section - Optimized for 16:9 -->
+    <section class="gallery-section">
+        <div class="gallery-container" id="imageGallery">
+            <!-- Image gallery with real images -->
+            <div class="gallery-image active">
+                <img src="images/BEAR3224.jpg" alt="Birthday celebration image">
             </div>
-            <div class="fact-card">
-                <div class="fact-icon">
-                    <i class="fas fa-utensils"></i>
+            <div class="gallery-image">
+                <div class="placeholder">
+                    <img src="images/BEAR3237.jpg">
                 </div>
-                <p class="fact-text">She makes the most delicious [favorite food] that everyone loves!</p>
             </div>
-            <div class="fact-card">
-                <div class="fact-icon">
-                    <i class="fas fa-laugh"></i>
+            <div class="gallery-image">
+                <div class="placeholder">
+                    <img src="images/BEAR3199.jpg">
                 </div>
-                <p class="fact-text">Her contagious laugh can brighten even the gloomiest day!</p>
             </div>
-            <div class="fact-card">
-                <div class="fact-icon">
-                    <i class="fas fa-book"></i>
+            <div class="gallery-image">
+                <div class="placeholder">
+                    <img src="images/BEAR3269.jpg">
                 </div>
-                <p class="fact-text">She's read [number] books this year alone - a true bookworm!</p>
+            </div>
+            <div class="gallery-image">
+                <div class="placeholder">
+                    <img src="images/BEAR3401.jpg">
+                </div>
             </div>
         </div>
     </section>
 </div>
 
 <footer>
-    <p>Created with love for Mai Anh's special day</p>
+    <p>Created with love for selna's special day</p>
 </footer>
 
 <script>
@@ -538,15 +409,15 @@
         const decorationsContainer = document.getElementById('decorations');
         const colors = ['#e91e63', '#9c27b0', '#f8bbd0', '#f48fb1', '#ce93d8'];
 
-        // Create circles
-        for (let i = 0; i < 20; i++) {
+        // Create fewer circles for mobile
+        for (let i = 0; i < 12; i++) {
             const circle = document.createElement('div');
             circle.classList.add('decoration', 'circle');
 
             // Random position
             const top = Math.random() * 100;
             const left = Math.random() * 100;
-            const size = Math.random() * 20 + 5;
+            const size = Math.random() * 15 + 5;
             const colorIndex = Math.floor(Math.random() * colors.length);
 
             circle.style.top = `${top}vh`;
@@ -562,15 +433,15 @@
             decorationsContainer.appendChild(circle);
         }
 
-        // Create squares
-        for (let i = 0; i < 15; i++) {
+        // Create fewer squares for mobile
+        for (let i = 0; i < 8; i++) {
             const square = document.createElement('div');
             square.classList.add('decoration', 'square');
 
             // Random position
             const top = Math.random() * 100;
             const left = Math.random() * 100;
-            const size = Math.random() * 15 + 5;
+            const size = Math.random() * 10 + 5;
             const colorIndex = Math.floor(Math.random() * colors.length);
             const rotation = Math.random() * 45;
 
@@ -588,55 +459,32 @@
             decorationsContainer.appendChild(square);
         }
 
-        // Image slider functionality
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
-        const dots = document.querySelectorAll('.dot');
-        const totalSlides = slides.length;
+        // Clickable Image Gallery functionality
+        let currentImage = 0;
+        const images = document.querySelectorAll('.gallery-image');
+        const totalImages = images.length;
 
-        // Initialize slider
-        function showSlide(index) {
-            // Deactivate all slides and dots
-            slides.forEach(slide => slide.classList.remove('active'));
-            dots.forEach(dot => dot.classList.remove('active'));
+        // Initialize gallery
+        function showImage(index) {
+            // Deactivate all images
+            images.forEach(image => image.classList.remove('active'));
 
-            // Activate current slide and dot
-            slides[index].classList.add('active');
-            dots[index].classList.add('active');
+            // Activate current image
+            images[index].classList.add('active');
 
-            currentSlide = index;
+            currentImage = index;
         }
 
-        // Next slide
-        document.getElementById('nextBtn').addEventListener('click', function() {
-            currentSlide = (currentSlide + 1) % totalSlides;
-            showSlide(currentSlide);
+        // Add click event to gallery container
+        document.getElementById('imageGallery').addEventListener('click', function() {
+            currentImage = (currentImage + 1) % totalImages;
+            showImage(currentImage);
         });
-
-        // Previous slide
-        document.getElementById('prevBtn').addEventListener('click', function() {
-            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-            showSlide(currentSlide);
-        });
-
-        // Dot navigation
-        dots.forEach(dot => {
-            dot.addEventListener('click', function() {
-                const slideIndex = parseInt(this.getAttribute('data-index'));
-                showSlide(slideIndex);
-            });
-        });
-
-        // Auto advance slides every 5 seconds
-        setInterval(function() {
-            currentSlide = (currentSlide + 1) % totalSlides;
-            showSlide(currentSlide);
-        }, 5000);
 
         // Birthday countdown
-        // Set your birthday date here (YYYY, MM-1, DD, HH, MM, SS)
+        // Set birthday date here (YYYY, MM-1, DD, HH, MM, SS)
         // Month is 0-indexed (January is 0, December is 11)
-        const birthdayDate = new Date(2025, 4, 27, 0, 0, 0); // Example: May 15, 2025
+        const birthdayDate = new Date(2025, 4, 27, 0, 0, 0); // May 27, 2025
 
         function updateCountdown() {
             const now = new Date();
