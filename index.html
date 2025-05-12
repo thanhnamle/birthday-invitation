@@ -589,9 +589,38 @@
             right: 10%;
             transform: rotate(-25deg);
         }
+
+        /* New styles for the love message */
+        #love-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.5);
+            background-color: rgba(255, 20, 147, 0.95);
+            color: white;
+            padding: 40px 60px;
+            border-radius: 25px;
+            font-size: 48px;
+            text-align: center;
+            z-index: 1000;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-family: 'Brush Script MT', cursive;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            line-height: 1.2;
+        }
+
+        #love-message.show {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
     </style>
 </head>
 <body>
+<!-- New div for love message -->
+<div id="love-message">Aww yêu lắm lun 💕</div>
+
 <div class="envlope-wrapper">
     <!-- Decorative elements around envelope -->
     <div class="envelope-decoration decoration-1">🎂</div>
@@ -639,7 +668,7 @@
 
 
             <p>selna</p>
-            <a href="images.html" class="confirm_button">Confirm participation</a>
+            <a class="confirm_button">Confirm participation</a>
         </div>
     </div>
 </div>
@@ -652,6 +681,7 @@
         var btn_open = $("#open");
         var letter = $('.letter');
         var letter_content = $('#content');
+        var love_message = $('#love-message');
         var isOpen = false;
 
         // Function to open the envelope
@@ -696,13 +726,15 @@
             open();
         });
 
-        // Handle confirmation button click - UPDATED to navigate to images.html
+        // Handle confirmation button click - UPDATED to show love message
         $('.confirm_button').on('click', function(e) {
-            // Now allowing the default navigation behavior to work
-            // No preventDefault() to allow page navigation
-            // Just providing feedback before navigation
-            console.log("Navigating to images.html...");
-            // The browser will handle the href="images.html" navigation
+            // Show the love message
+            love_message.addClass('show');
+
+            // Automatically hide the message after 3 seconds
+            setTimeout(function() {
+                love_message.removeClass('show');
+            }, 3000);
         });
 
         // Create function to generate animations
