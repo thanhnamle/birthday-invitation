@@ -103,10 +103,9 @@
             position: relative;
             width: 320px;
             height: 200px;
+            left: 7%;
             border-bottom-left-radius: 8px;
             border-bottom-right-radius: 8px;
-            margin-left: auto;
-            margin-right: auto;
             top: 150px;
             background-color: #ff1493; /* Changed to deep pink */
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
@@ -116,6 +115,48 @@
 
         #envelope:hover {
             transform: translateY(-5px);
+        }
+
+        /* Enhanced letter-hint styling */
+        .letter-hint {
+            position: absolute;
+            top: 70px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #ff69b4;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation: pulse-hint 1.5s infinite alternate;
+            z-index: -1;
+            cursor: pointer;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .letter-hint.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        @keyframes pulse-hint {
+            0% {
+                transform: translateX(-50%) scale(1);
+            }
+            100% {
+                transform: translateX(-50%) scale(1.1);
+            }
+        }
+
+        /* Add a small arrow pointing to the envelope */
+        .letter-hint:after {
+            content: "↓";
+            display: block;
+            font-size: 22px;
+            margin-top: 5px;
         }
 
         .front {
@@ -183,7 +224,7 @@
             padding: 30px;
             font-size: 16px;
             line-height: 1.5;
-            z-index: 0;
+            z-index: 10;
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.8s ease, transform 0.8s ease;
@@ -551,7 +592,7 @@
         }
 
         .envlope-wrapper {
-            height: 520px;
+            height: 600px;
             position: relative;
         }
 
@@ -615,6 +656,98 @@
             opacity: 1;
             transform: translate(-50%, -50%) scale(1);
         }
+
+        /* Mobile responsive adjustments */
+        @media (max-width: 768px) {
+            #envelope {
+                display: flex;
+                margin: 0 auto;
+                max-width: 100%;
+            }
+
+            .letter_content {
+                margin-left: -5px;
+                margin-top: -10px;
+                padding: 20px;
+                font-size: 14px;
+            }
+
+            .letter_content h1 {
+                font-size: 26px;
+            }
+
+            .letter_content h1::before,
+            .letter_content h1::after {
+                font-size: 20px;
+            }
+
+            .letter_content h1::before {
+                left: 15px;
+            }
+
+            .letter_content h1::after {
+                right: 15px;
+            }
+
+            .invitation-details {
+                padding: 10px;
+            }
+
+            .detail-item {
+                margin-bottom: 6px;
+            }
+
+            .confirm_button {
+                padding: 12px 24px;
+                font-size: 16px;
+            }
+
+            #love-message {
+                padding: 25px 40px;
+                font-size: 36px;
+                border-radius: 20px;
+            }
+        }
+
+        /* Small mobile devices */
+        @media (max-width: 480px) {
+            #envelope {
+                position: relative;
+                display: flex;
+                margin: -15px;
+                max-width: 100%;
+            }
+
+            .letter_content {
+                position: absolute;
+                margin: -10px;
+                padding: 20px;
+                font-size: 13px;
+            }
+
+            .letter_content h1 {
+                font-size: 22px;
+            }
+
+            .invitation-details {
+                padding: 8px;
+            }
+
+            .confirm_button {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+
+            #love-message {
+                padding: 20px 30px;
+                font-size: 28px;
+                border-radius: 15px;
+            }
+
+            .decoration-1, .decoration-2, .decoration-3, .decoration-4 {
+                font-size: 20px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -671,6 +804,8 @@
             <a class="confirm_button">Confirm participation</a>
         </div>
     </div>
+
+    <div class="letter-hint">Ấn vào đây nè</div>
 </div>
 <div class="birthday-animations"></div>
 

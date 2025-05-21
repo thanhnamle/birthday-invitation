@@ -119,6 +119,48 @@
             transform: translateY(-5px);
         }
 
+        /* Enhanced letter-hint styling */
+         .letter-hint {
+             position: absolute;
+             top: 200px;
+             left: 50%;
+             transform: translateX(-50%);
+             background-color: #ff69b4;
+             color: white;
+             padding: 8px 16px;
+             border-radius: 20px;
+             font-size: 18px;
+             font-weight: bold;
+             text-align: center;
+             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+             animation: pulse-hint 1.5s infinite alternate;
+             z-index: 0;
+             cursor: pointer;
+             transition: opacity 0.5s ease, visibility 0.5s ease;
+         }
+
+        .letter-hint.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        @keyframes pulse-hint {
+            0% {
+                transform: translateX(-50%) scale(1);
+            }
+            100% {
+                transform: translateX(-50%) scale(1.1);
+            }
+        }
+
+        /* Add a small arrow pointing to the envelope */
+        .letter-hint:after {
+            content: "↓";
+            display: block;
+            font-size: 22px;
+            margin-top: 5px;
+        }
+
         .front {
             position: absolute;
             width: 0;
@@ -818,6 +860,8 @@
             </div>
         </div>
     </div>
+
+    <div class="letter-hint ">Ấn vào đây nè</div>
 </div>
 
 <div class="birthday-animations"></div>
@@ -900,13 +944,17 @@
         });
 
         // Allow Enter key to submit password
-        passwordInput.on('keypress', function(e) {
-            if (e.which === 13) {
-                validatePassword();
+        $("#passwordInput").on('input', function() {
+            // Remove any non-digit characters
+            this.value = this.value.replace(/[^0-9]/g, '');
+
+            // Limit to 4 digits (as an extra precaution beyond maxlength)
+            if (this.value.length > 4) {
+                this.value = this.value.slice(0, 4);
             }
         });
 
-        // Password validation function
+        // Password validation function remains the same
         function validatePassword() {
             if (passwordInput.val() === correctPassword) {
                 // Password correct, prepare for transition
